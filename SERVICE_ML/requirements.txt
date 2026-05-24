@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+Pillow
+scikit-image
+scikit-learn
+imbalanced-learn
+joblib
+numpy
