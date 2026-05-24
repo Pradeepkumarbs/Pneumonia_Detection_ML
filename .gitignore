@@ -1,0 +1,61 @@
+# ─── Python ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
+*.so
+
+# ─── ML Model (too large for git) ────────────────────
+ml-service/model/pneumonia.pkl
+ml-service/model/*.pkl
+ml-service/model/*.joblib
+model/pneumonia.pkl
+
+# ─── Node.js ──────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Environment Variables (secrets) ─────────────────
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ─── Uploaded X-ray Images ───────────────────────────
+backend/uploads/
+uploads/
+
+# ─── Frontend Build ───────────────────────────────────
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# ─── Logs ─────────────────────────────────────────────
+*.log
+logs/
+
+# ─── OS Files ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ─── IDE / Editor ─────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+ml-service/chest_xray/
+chest_xray/
+*.jpeg
+*.jpg
+*.png

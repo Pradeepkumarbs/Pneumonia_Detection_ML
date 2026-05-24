@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: pneumonia_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  ml-service:
+    build: ./ml-service
+    container_name: pneumonia_ml
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ml-service/model:/app/model  # mount your .pkl here
+
+  backend:
+    build: ./backend
+    container_name: pneumonia_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/pneumonia_db
+      - ML_SERVICE_URL=http://ml-service:8000
+      - JWT_SECRET=your_super_secret_key_here_min_32_chars
+      - EMAIL_USER=yourgmail@gmail.com
+      - EMAIL_PASS=your_gmail_app_password
+    depends_on:
+      - mongodb
+      - ml-service
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build: ./frontend
+    container_name: pneumonia_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
